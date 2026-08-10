@@ -10,7 +10,7 @@
         h1 { color: #58a6ff; border-bottom: 2px solid #30363d; padding-bottom: 10px; }
         h2 { color: #f0f6fc; margin: 20px 0 10px 0; }
         .stats { display: flex; flex-wrap: wrap; gap: 15px; margin: 15px 0; }
-        .stat-box { background: #161b22; padding: 15px 25px; border-radius: 8px; border: 1px solid #30363d; flex: 1; min-width: 120px; text-align: center; }
+        .stat-box { background: #161b22; padding: 15px 25px; border-radius: 8px; border: 1px solid #30363d; flex: 1; min-width: 100px; text-align: center; }
         .stat-box .number { font-size: 2em; font-weight: bold; color: #58a6ff; }
         .stat-box .label { color: #8b949e; font-size: 0.9em; }
         input { width: 100%; padding: 10px; margin: 10px 0; background: #161b22; border: 1px solid #30363d; border-radius: 5px; color: #c9d1d9; font-size: 16px; }
@@ -27,24 +27,20 @@
         .badge-ip { background: #da3633; color: white; }
         .badge-username { background: #3d8b37; color: white; }
         .badge-date { background: #6e40c9; color: white; }
-        .badge-ssn { background: #b62324; color: white; }
-        .badge-name { background: #1f6feb; color: white; }
         .footer { margin-top: 30px; padding-top: 15px; border-top: 1px solid #21262d; color: #8b949e; font-size: 0.9em; text-align: center; }
     </style>
 </head>
 <body>
     <h1>📊 Data Archive – Dashboard</h1>
-    <p style="color:#8b949e;">Extracted from public sources • GitHub, BBC, Government Sites</p>
+    <p style="color:#8b949e;">Cleaned data from government websites • 1,589 valid data points</p>
 
-    <div class="stats">
+    <div class="stats" id="stats">
         <div class="stat-box"><div class="number" id="total">Loading...</div><div class="label">Total Matches</div></div>
         <div class="stat-box"><div class="number" id="emails">-</div><div class="label">Emails</div></div>
         <div class="stat-box"><div class="number" id="phones">-</div><div class="label">Phones</div></div>
         <div class="stat-box"><div class="number" id="addresses">-</div><div class="label">Addresses</div></div>
         <div class="stat-box"><div class="number" id="urls">-</div><div class="label">URLs</div></div>
-        <div class="stat-box"><div class="number" id="ips">-</div><div class="label">IPs</div></div>
-        <div class="stat-box"><div class="number" id="zips">-</div><div class="label">ZIP Codes</div></div>
-        <div class="stat-box"><div class="number" id="usernames">-</div><div class="label">Usernames</div></div>
+        <div class="stat-box"><div class="number" id="social">-</div><div class="label">Social</div></div>
     </div>
 
     <input type="text" id="searchInput" placeholder="🔍 Search all data..." onkeyup="filterData()">
@@ -59,73 +55,60 @@
     </div>
 
     <div class="footer">
-        🔒 Private Repository • Data stored locally • No PII shared publicly
+        🔒 Private Repository • Data for personal research only • Source: Government websites
     </div>
 
     <script>
         let allData = [];
 
-        // Load data from JSON files
         function loadData() {
-            const files = [
-                'data/emails.json',
-                'data/phones.json',
-                'data/addresses.json',
-                'data/urls.json',
-                'data/ips.json',
-                'data/zips.json',
-                'data/usernames.json',
-                'data/dates.json'
-            ];
-
-            let loaded = 0;
-            files.forEach(file => {
-                fetch(file)
-                    .then(response => {
-                        if (!response.ok) throw new Error('File not found');
-                        return response.json();
-                    })
-                    .then(data => {
-                        if (Array.isArray(data)) {
-                            allData = allData.concat(data);
-                        }
-                        loaded++;
-                        if (loaded === files.length) renderAll();
-                    })
-                    .catch(() => {
-                        loaded++;
-                        if (loaded === files.length) {
-                            // If no files, load default sample data
-                            allData = getSampleData();
-                            renderAll();
-                        }
-                    });
-            });
-        }
-
-        function getSampleData() {
-            return [
-                { type: 'email', value: 'sample@example.com', source: 'Sample data' },
-                { type: 'address', value: '123 Main St, City, State 12345', source: 'Sample data' },
-                { type: 'phone', value: '(555) 123-4567', source: 'Sample data' },
-                { type: 'url', value: 'https://example.com', source: 'Sample data' },
-                { type: 'zipcode', value: '12345', source: 'Sample data' },
-                { type: 'ip', value: '192.168.1.1', source: 'Sample data' },
-                { type: 'username', value: '@sampleuser', source: 'Sample data' },
-                { type: 'date', value: '2026-08-10', source: 'Sample data' }
-            ];
+            fetch('data/data.json')
+                .then(response => {
+                    if (!response.ok) throw new Error('File not found');
+                    return response.json();
+                })
+                .then(data => {
+                    allData = [];
+                    // Extract data from the cleaned JSON structure
+                    if (data.phones) {
+                        data.phones.forEach(item => {
+                            allData.push({ type: 'phone', value: item.value, source: item.source });
+                        });
+                    }
+                    if (data.emails) {
+                        data.emails.forEach(item => {
+                            allData.push({ type: 'email', value: item.value, source: item.source });
+                        });
+                    }
+                    if (data.addresses) {
+                        data.addresses.forEach(item => {
+                            allData.push({ type: 'address', value: item.value, source: item.source });
+                        });
+                    }
+                    if (data.urls) {
+                        data.urls.forEach(item => {
+                            allData.push({ type: 'url', value: item.value, source: item.source });
+                        });
+                    }
+                    if (data.social) {
+                        data.social.forEach(item => {
+                            allData.push({ type: 'social', value: `${item.platform}: ${item.username}`, source: item.source });
+                        });
+                    }
+                    renderAll();
+                })
+                .catch(() => {
+                    document.getElementById('loading').textContent = '❌ Failed to load data';
+                });
         }
 
         function renderAll() {
-            // Update stats
             document.getElementById('total').textContent = allData.length;
             document.getElementById('emails').textContent = allData.filter(d => d.type === 'email').length;
             document.getElementById('phones').textContent = allData.filter(d => d.type === 'phone').length;
             document.getElementById('addresses').textContent = allData.filter(d => d.type === 'address').length;
             document.getElementById('urls').textContent = allData.filter(d => d.type === 'url').length;
-            document.getElementById('ips').textContent = allData.filter(d => d.type === 'ip').length;
-            document.getElementById('zips').textContent = allData.filter(d => d.type === 'zipcode').length;
-            document.getElementById('usernames').textContent = allData.filter(d => d.type === 'username').length;
+            document.getElementById('social').textContent = allData.filter(d => d.type === 'social').length;
 
             document.getElementById('loading').style.display = 'none';
             document.getElementById('dataTable').style.display = 'table';
