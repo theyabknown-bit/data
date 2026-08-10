@@ -1,6 +1,14 @@
 ﻿# ⚖️ LEGAL DATA HARVESTING - PUBLIC INFORMATION
 
-## ✅ Legal Uses of Data Harvesting
+## 📋 Table of Contents
+1. [Legal Uses](#legal-uses)
+2. [Key Principles](#key-principles)
+3. [Relevant Laws](#relevant-laws)
+4. [Best Practices](#best-practices)
+
+---
+
+## Legal Uses
 
 ### 1. Research and Education
 - Academic research on cybersecurity
@@ -50,7 +58,9 @@
 - Bug bounty research
 - Security assessments
 
-## ⚠️ Key Principles
+---
+
+## Key Principles
 
 - ✅ Always have permission before scanning
 - ✅ Respect robots.txt
@@ -61,17 +71,33 @@
 - ✅ Encrypt sensitive data
 - ✅ Inform users of data collection
 
-## 📜 Relevant Laws
+---
 
-| Country | Law |
-|---------|-----|
-| UAE | Federal Law No. 2 of 2019 (Cybercrimes) |
-| Saudi Arabia | Anti-Cyber Crime Law |
-| India | IT Act 2000 & Data Protection Bill |
-| EU | GDPR |
-| USA | CCPA, CFAA |
-| UK | Computer Misuse Act |
+## Relevant Laws
+
+| Country | Law | Penalty |
+|---------|-----|---------|
+| UAE | Federal Law No. 2 of 2019 (Cybercrimes) | Up to 15 years + AED 15M |
+| Saudi Arabia | Anti-Cyber Crime Law | Up to 10 years + SAR 5M |
+| India | IT Act 2000 & Data Protection Bill | Up to 10 years + fines |
+| EU | GDPR | €20M or 4% of global turnover |
+| USA | CCPA, CFAA | Up to 20 years + $250K |
+| UK | Computer Misuse Act | Up to 10 years + fines |
 
 ---
 
-**Public Document - No Password Required**
+## Best Practices
+
+1. **Always get written permission** before scanning any system
+2. **Document everything** - Keep logs of all activities
+3. **Respect privacy** - Only collect what you need
+4. **Secure data** - Encrypt sensitive information
+5. **Delete when done** - Don't keep data longer than necessary
+6. **Be transparent** - Inform users about data collection
+7. **Follow laws** - Know and comply with local regulations
+
+---
+
+**🔒 Public Document - No Password Required**
+
+[← Back to Dashboard](https://theyabknown-bit.github.io/data/)
