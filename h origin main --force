@@ -1,0 +1,40 @@
+[33mcommit db3da5f2065f99269d045bfad981d9d6ccbecdd6[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Theyab <theyabknown@gmail.com>
+Date:   Mon Aug 10 08:52:19 2026 +0400
+
+    Update extraction summary (aggregated data only)
+
+ Parth971_repos.json                               |   4052 [31m-[m
+ address_crawl_20260810_052743/harvest_summary.log |      5 [31m-[m
+ bahrain/harvest_summary.log                       |     28 [31m-[m
+ bbc_data/harvest_summary.log                      |    380 [31m-[m
+ bulk_repos.json                                   |  83153 [31m-----[m
+ egypt/harvest_summary.log                         |      0
+ epstein_1/harvest_summary.log                     |      0
+ epstein_2/harvest_summary.log                     |      0
+ epstein_3/harvest_summary.log                     |      0
+ epstein_4/harvest_summary.log                     |      0
+ epstein_5/harvest_summary.log                     |     45 [31m-[m
+ epstein_6/harvest_summary.log                     |     98 [31m-[m
+ epstein_docs/harvest_summary.log                  |      0
+ epstein_fbi/harvest_summary.log                   |      0
+ epstein_files/harvest_summary.log                 |      0
+ epstein_news/harvest_summary.log                  |      0
+ epstein_wiki/harvest_summary.log                  |      0
+ extraction_summary.txt                            |      8 [32m+[m
+ github_addresses_20260810_080436.json             | 361242 [31m-------------------[m
+ github_data_20260810_070848.json                  |      1 [31m-[m
+ haifa/harvest_summary.log                         |      0
+ harvest_output/harvest_summary.log                |      0
+ israel_gov/harvest_summary.log                    |      0
+ jerusalem/harvest_summary.log                     |      0
+ jordan/harvest_summary.log                        |      0
+ kuwait/harvest_summary.log                        |      0
+ oman/harvest_summary.log                          |      0
+ python_trending.json                              |  35914 [31m--[m
+ riyadh/harvest_summary.log                        |      0
+ search_results.json                               | 333430 [31m-----------------[m
+ sharjah/harvest_summary.log                       |      0
+ tel_aviv/harvest_summary.log                      |      0
+ uae_gov/harvest_summary.log                       |     36 [31m-[m
+ 33 files changed, 8 insertions(+), 818384 deletions(-)
