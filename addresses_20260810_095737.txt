@@ -1,0 +1,11 @@
+1600 Pennsylvania Avenue - https://www.whitehouse.gov/contact
+1 character - https://www.whitehouse.gov/contact
+1 banner-a optin cmplz-center - https://www.state.gov/embassies
+1 banner-a optout cmplz-center - https://www.state.gov/embassies
+4 layout-sidebar-first - https://www.usa.gov/contact
+54396 .footer-fluid, .page-isotope-articles .footer - https://www.un.org/en/contact-us
+1994 Genocide against - https://www.un.org/en/contact-us
+14 .unorg-home-5x4.third - https://www.un.org/en/contact-us
+74774 .home-footer - https://www.un.org/en/contact-us
+1 list-col-sm-2 list - https://www.canada.ca/en/contact.html
+8 mx-auto text-center - https://www.my.gov.sa/wps/portal/snp/content
