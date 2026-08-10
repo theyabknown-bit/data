@@ -14,8 +14,9 @@
         .stat-box .number { font-size: 2em; font-weight: bold; color: #58a6ff; }
         .stat-box .label { color: #8b949e; font-size: 0.9em; }
         input { width: 100%; padding: 10px; margin: 10px 0; background: #161b22; border: 1px solid #30363d; border-radius: 5px; color: #c9d1d9; font-size: 16px; }
-        table { width: 100%; border-collapse: collapse; margin: 10px 0; }
-        th { background: #161b22; text-align: left; padding: 10px; border-bottom: 2px solid #30363d; color: #f0f6fc; }
+        .table-wrapper { max-height: 70vh; overflow-y: auto; border: 1px solid #30363d; border-radius: 8px; }
+        table { width: 100%; border-collapse: collapse; }
+        th { background: #161b22; text-align: left; padding: 10px; border-bottom: 2px solid #30363d; color: #f0f6fc; position: sticky; top: 0; z-index: 10; }
         td { padding: 10px; border-bottom: 1px solid #21262d; }
         tr:hover { background: #161b22; }
         .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8em; font-weight: bold; }
@@ -23,7 +24,11 @@
         .badge-url { background: #8b5cf6; color: white; }
         .badge-social { background: #1f6feb; color: white; }
         .badge-email { background: #d29922; color: white; }
+        .badge-address { background: #f0883e; color: white; }
         .footer { margin-top: 30px; padding-top: 15px; border-top: 1px solid #21262d; color: #8b949e; font-size: 0.9em; text-align: center; }
+        .load-more-btn { background: #1f6feb; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; margin: 20px auto; display: block; font-size: 16px; }
+        .load-more-btn:hover { background: #388bfd; }
+        .load-more-btn:disabled { opacity: 0.5; cursor: not-allowed; }
     </style>
 </head>
 <body>
@@ -43,10 +48,13 @@
     <div id="dataContainer">
         <h2>📋 Extracted Data</h2>
         <div id="loading">Loading data...</div>
-        <table id="dataTable" style="display:none;">
-            <thead><tr><th>Type</th><th>Value</th><th>Source</th></tr></thead>
-            <tbody id="tableBody"></tbody>
-        </table>
+        <div class="table-wrapper" id="tableWrapper">
+            <table id="dataTable" style="display:none;">
+                <thead><tr><th>Type</th><th>Value</th><th>Source</th></tr></thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+        <button class="load-more-btn" id="loadMoreBtn" onclick="loadMore()">Load More (50)</button>
     </div>
 
     <div class="footer">
@@ -55,6 +63,8 @@
 
     <script>
         let allData = [];
+        let displayCount = 50;
+        const batchSize = 50;
 
         function loadData() {
             fetch('data/data.json')
@@ -86,14 +96,14 @@
 
             document.getElementById('loading').style.display = 'none';
             document.getElementById('dataTable').style.display = 'table';
-            renderTable(allData);
+            renderTable(allData.slice(0, displayCount));
+            document.getElementById('loadMoreBtn').style.display = displayCount < allData.length ? 'block' : 'none';
         }
 
         function renderTable(data) {
             const tbody = document.getElementById('tableBody');
             tbody.innerHTML = '';
-            const displayed = data.slice(0, 100);
-            displayed.forEach(item => {
+            data.forEach(item => {
                 const tr = document.createElement('tr');
                 const badgeClass = `badge-${item.type}`;
                 tr.innerHTML = `
@@ -103,10 +113,14 @@
                 `;
                 tbody.appendChild(tr);
             });
-            if (data.length > 100) {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `<td colspan="3" style="text-align:center;color:#8b949e;">Showing first 100 of ${data.length} entries</td>`;
-                tbody.appendChild(tr);
+        }
+
+        function loadMore() {
+            displayCount += batchSize;
+            if (displayCount > allData.length) displayCount = allData.length;
+            renderTable(allData.slice(0, displayCount));
+            if (displayCount >= allData.length) {
+                document.getElementById('loadMoreBtn').style.display = 'none';
             }
         }
 
@@ -118,13 +132,19 @@
 
         function filterData() {
             const query = document.getElementById('searchInput').value.toLowerCase();
-            if (!query) { renderTable(allData); return; }
+            if (!query) {
+                displayCount = 50;
+                renderTable(allData.slice(0, displayCount));
+                document.getElementById('loadMoreBtn').style.display = displayCount < allData.length ? 'block' : 'none';
+                return;
+            }
             const filtered = allData.filter(item =>
                 (item.type || '').toLowerCase().includes(query) ||
                 (item.value || '').toLowerCase().includes(query) ||
                 (item.source || '').toLowerCase().includes(query)
             );
             renderTable(filtered);
+            document.getElementById('loadMoreBtn').style.display = 'none';
         }
 
         // Start
