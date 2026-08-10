@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Archive – Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0d1117; color: #c9d1d9; padding: 20px; }
+        h1 { color: #58a6ff; border-bottom: 2px solid #30363d; padding-bottom: 10px; }
+        h2 { color: #f0f6fc; margin: 20px 0 10px 0; }
+        .stats { display: flex; flex-wrap: wrap; gap: 15px; margin: 15px 0; }
+        .stat-box { background: #161b22; padding: 15px 25px; border-radius: 8px; border: 1px solid #30363d; flex: 1; min-width: 120px; text-align: center; }
+        .stat-box .number { font-size: 2em; font-weight: bold; color: #58a6ff; }
+        .stat-box .label { color: #8b949e; font-size: 0.9em; }
+        input { width: 100%; padding: 10px; margin: 10px 0; background: #161b22; border: 1px solid #30363d; border-radius: 5px; color: #c9d1d9; font-size: 16px; }
+        table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+        th { background: #161b22; text-align: left; padding: 10px; border-bottom: 2px solid #30363d; color: #f0f6fc; }
+        td { padding: 10px; border-bottom: 1px solid #21262d; }
+        tr:hover { background: #161b22; }
+        .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8em; font-weight: bold; }
+        .badge-email { background: #1f6feb; color: white; }
+        .badge-phone { background: #2ea043; color: white; }
+        .badge-address { background: #d29922; color: white; }
+        .badge-url { background: #8b5cf6; color: white; }
+        .badge-zipcode { background: #f0883e; color: white; }
+        .badge-ip { background: #da3633; color: white; }
+        .badge-username { background: #3d8b37; color: white; }
+        .badge-date { background: #6e40c9; color: white; }
+        .badge-ssn { background: #b62324; color: white; }
+        .badge-name { background: #1f6feb; color: white; }
+        .footer { margin-top: 30px; padding-top: 15px; border-top: 1px solid #21262d; color: #8b949e; font-size: 0.9em; text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>📊 Data Archive – Dashboard</h1>
+    <p style="color:#8b949e;">Extracted from public sources • GitHub, BBC, Government Sites</p>
+
+    <div class="stats">
+        <div class="stat-box"><div class="number" id="total">Loading...</div><div class="label">Total Matches</div></div>
+        <div class="stat-box"><div class="number" id="emails">-</div><div class="label">Emails</div></div>
+        <div class="stat-box"><div class="number" id="phones">-</div><div class="label">Phones</div></div>
+        <div class="stat-box"><div class="number" id="addresses">-</div><div class="label">Addresses</div></div>
+        <div class="stat-box"><div class="number" id="urls">-</div><div class="label">URLs</div></div>
+        <div class="stat-box"><div class="number" id="ips">-</div><div class="label">IPs</div></div>
+        <div class="stat-box"><div class="number" id="zips">-</div><div class="label">ZIP Codes</div></div>
+        <div class="stat-box"><div class="number" id="usernames">-</div><div class="label">Usernames</div></div>
+    </div>
+
+    <input type="text" id="searchInput" placeholder="🔍 Search all data..." onkeyup="filterData()">
+
+    <div id="dataContainer">
+        <h2>📋 Extracted Data</h2>
+        <div id="loading">Loading data...</div>
+        <table id="dataTable" style="display:none;">
+            <thead><tr><th>Type</th><th>Value</th><th>Source</th></tr></thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+
+    <div class="footer">
+        🔒 Private Repository • Data stored locally • No PII shared publicly
+    </div>
+
+    <script>
+        let allData = [];
+
+        // Load data from JSON files
+        function loadData() {
+            const files = [
+                'data/emails.json',
+                'data/phones.json',
+                'data/addresses.json',
+                'data/urls.json',
+                'data/ips.json',
+                'data/zips.json',
+                'data/usernames.json',
+                'data/dates.json'
+            ];
+
+            let loaded = 0;
+            files.forEach(file => {
+                fetch(file)
+                    .then(response => {
+                        if (!response.ok) throw new Error('File not found');
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (Array.isArray(data)) {
+                            allData = allData.concat(data);
+                        }
+                        loaded++;
+                        if (loaded === files.length) renderAll();
+                    })
+                    .catch(() => {
+                        loaded++;
+                        if (loaded === files.length) {
+                            // If no files, load default sample data
+                            allData = getSampleData();
+                            renderAll();
+                        }
+                    });
+            });
+        }
+
+        function getSampleData() {
+            return [
+                { type: 'email', value: 'sample@example.com', source: 'Sample data' },
+                { type: 'address', value: '123 Main St, City, State 12345', source: 'Sample data' },
+                { type: 'phone', value: '(555) 123-4567', source: 'Sample data' },
+                { type: 'url', value: 'https://example.com', source: 'Sample data' },
+                { type: 'zipcode', value: '12345', source: 'Sample data' },
+                { type: 'ip', value: '192.168.1.1', source: 'Sample data' },
+                { type: 'username', value: '@sampleuser', source: 'Sample data' },
+                { type: 'date', value: '2026-08-10', source: 'Sample data' }
+            ];
+        }
+
+        function renderAll() {
+            // Update stats
+            document.getElementById('total').textContent = allData.length;
+            document.getElementById('emails').textContent = allData.filter(d => d.type === 'email').length;
+            document.getElementById('phones').textContent = allData.filter(d => d.type === 'phone').length;
+            document.getElementById('addresses').textContent = allData.filter(d => d.type === 'address').length;
+            document.getElementById('urls').textContent = allData.filter(d => d.type === 'url').length;
+            document.getElementById('ips').textContent = allData.filter(d => d.type === 'ip').length;
+            document.getElementById('zips').textContent = allData.filter(d => d.type === 'zipcode').length;
+            document.getElementById('usernames').textContent = allData.filter(d => d.type === 'username').length;
+
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('dataTable').style.display = 'table';
+            renderTable(allData);
+        }
+
+        function renderTable(data) {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+            const displayed = data.slice(0, 500);
+            displayed.forEach(item => {
+                const tr = document.createElement('tr');
+                const badgeClass = `badge-${item.type}`;
+                tr.innerHTML = `
+                    <td><span class="badge ${badgeClass}">${item.type}</span></td>
+                    <td>${escapeHtml(item.value || '')}</td>
+                    <td>${escapeHtml(item.source || '')}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+            if (data.length > 500) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td colspan="3" style="text-align:center;color:#8b949e;">Showing first 500 of ${data.length} entries</td>`;
+                tbody.appendChild(tr);
+            }
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function filterData() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            if (!query) { renderTable(allData); return; }
+            const filtered = allData.filter(item =>
+                (item.type || '').toLowerCase().includes(query) ||
+                (item.value || '').toLowerCase().includes(query) ||
+                (item.source || '').toLowerCase().includes(query)
+            );
+            renderTable(filtered);
+        }
+
+        // Start
+        loadData();
+    </script>
+</body>
+</html>
