@@ -10,7 +10,7 @@
         h1 { color: #58a6ff; border-bottom: 2px solid #30363d; padding-bottom: 10px; }
         h2 { color: #f0f6fc; margin: 20px 0 10px 0; }
         .stats { display: flex; flex-wrap: wrap; gap: 15px; margin: 15px 0; }
-        .stat-box { background: #161b22; padding: 15px 25px; border-radius: 8px; border: 1px solid #30363d; flex: 1; min-width: 100px; text-align: center; }
+        .stat-box { background: #161b22; padding: 15px 25px; border-radius: 8px; border: 1px solid #30363d; flex: 1; min-width: 120px; text-align: center; }
         .stat-box .number { font-size: 2em; font-weight: bold; color: #58a6ff; }
         .stat-box .label { color: #8b949e; font-size: 0.9em; }
         input { width: 100%; padding: 10px; margin: 10px 0; background: #161b22; border: 1px solid #30363d; border-radius: 5px; color: #c9d1d9; font-size: 16px; }
@@ -19,28 +19,23 @@
         td { padding: 10px; border-bottom: 1px solid #21262d; }
         tr:hover { background: #161b22; }
         .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8em; font-weight: bold; }
-        .badge-email { background: #1f6feb; color: white; }
         .badge-phone { background: #2ea043; color: white; }
-        .badge-address { background: #d29922; color: white; }
         .badge-url { background: #8b5cf6; color: white; }
-        .badge-zipcode { background: #f0883e; color: white; }
-        .badge-ip { background: #da3633; color: white; }
-        .badge-username { background: #3d8b37; color: white; }
-        .badge-date { background: #6e40c9; color: white; }
+        .badge-social { background: #1f6feb; color: white; }
+        .badge-email { background: #d29922; color: white; }
         .footer { margin-top: 30px; padding-top: 15px; border-top: 1px solid #21262d; color: #8b949e; font-size: 0.9em; text-align: center; }
     </style>
 </head>
 <body>
     <h1>📊 Data Archive – Dashboard</h1>
-    <p style="color:#8b949e;">Cleaned data from government websites • 1,589 valid data points</p>
+    <p style="color:#8b949e;">Real data from GitHub • Government websites • Social media</p>
 
     <div class="stats" id="stats">
         <div class="stat-box"><div class="number" id="total">Loading...</div><div class="label">Total Matches</div></div>
-        <div class="stat-box"><div class="number" id="emails">-</div><div class="label">Emails</div></div>
         <div class="stat-box"><div class="number" id="phones">-</div><div class="label">Phones</div></div>
-        <div class="stat-box"><div class="number" id="addresses">-</div><div class="label">Addresses</div></div>
         <div class="stat-box"><div class="number" id="urls">-</div><div class="label">URLs</div></div>
         <div class="stat-box"><div class="number" id="social">-</div><div class="label">Social</div></div>
+        <div class="stat-box"><div class="number" id="emails">-</div><div class="label">Emails</div></div>
     </div>
 
     <input type="text" id="searchInput" placeholder="🔍 Search all data..." onkeyup="filterData()">
@@ -55,7 +50,7 @@
     </div>
 
     <div class="footer">
-        🔒 Private Repository • Data for personal research only • Source: Government websites
+        🔒 Private Repository • Data for personal research only
     </div>
 
     <script>
@@ -68,47 +63,26 @@
                     return response.json();
                 })
                 .then(data => {
-                    allData = [];
-                    // Extract data from the cleaned JSON structure
-                    if (data.phones) {
-                        data.phones.forEach(item => {
-                            allData.push({ type: 'phone', value: item.value, source: item.source });
-                        });
-                    }
-                    if (data.emails) {
-                        data.emails.forEach(item => {
-                            allData.push({ type: 'email', value: item.value, source: item.source });
-                        });
-                    }
-                    if (data.addresses) {
-                        data.addresses.forEach(item => {
-                            allData.push({ type: 'address', value: item.value, source: item.source });
-                        });
-                    }
-                    if (data.urls) {
-                        data.urls.forEach(item => {
-                            allData.push({ type: 'url', value: item.value, source: item.source });
-                        });
-                    }
-                    if (data.social) {
-                        data.social.forEach(item => {
-                            allData.push({ type: 'social', value: `${item.platform}: ${item.username}`, source: item.source });
-                        });
-                    }
+                    allData = data;
                     renderAll();
                 })
-                .catch(() => {
-                    document.getElementById('loading').textContent = '❌ Failed to load data';
+                .catch(error => {
+                    document.getElementById('loading').textContent = '❌ Failed to load data: ' + error;
+                    console.error('Error:', error);
                 });
         }
 
         function renderAll() {
+            const phones = allData.filter(d => d.type === 'phone');
+            const urls = allData.filter(d => d.type === 'url');
+            const social = allData.filter(d => d.type === 'social');
+            const emails = allData.filter(d => d.type === 'email');
+
             document.getElementById('total').textContent = allData.length;
-            document.getElementById('emails').textContent = allData.filter(d => d.type === 'email').length;
-            document.getElementById('phones').textContent = allData.filter(d => d.type === 'phone').length;
-            document.getElementById('addresses').textContent = allData.filter(d => d.type === 'address').length;
-            document.getElementById('urls').textContent = allData.filter(d => d.type === 'url').length;
-            document.getElementById('social').textContent = allData.filter(d => d.type === 'social').length;
+            document.getElementById('phones').textContent = phones.length;
+            document.getElementById('urls').textContent = urls.length;
+            document.getElementById('social').textContent = social.length;
+            document.getElementById('emails').textContent = emails.length;
 
             document.getElementById('loading').style.display = 'none';
             document.getElementById('dataTable').style.display = 'table';
@@ -118,7 +92,7 @@
         function renderTable(data) {
             const tbody = document.getElementById('tableBody');
             tbody.innerHTML = '';
-            const displayed = data.slice(0, 500);
+            const displayed = data.slice(0, 100);
             displayed.forEach(item => {
                 const tr = document.createElement('tr');
                 const badgeClass = `badge-${item.type}`;
@@ -129,9 +103,9 @@
                 `;
                 tbody.appendChild(tr);
             });
-            if (data.length > 500) {
+            if (data.length > 100) {
                 const tr = document.createElement('tr');
-                tr.innerHTML = `<td colspan="3" style="text-align:center;color:#8b949e;">Showing first 500 of ${data.length} entries</td>`;
+                tr.innerHTML = `<td colspan="3" style="text-align:center;color:#8b949e;">Showing first 100 of ${data.length} entries</td>`;
                 tbody.appendChild(tr);
             }
         }
@@ -158,4 +132,3 @@
     </script>
 </body>
 </html>
-<!-- rebuild trigger -->
