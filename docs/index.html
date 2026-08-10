@@ -3,152 +3,288 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Archive – Dashboard</title>
+    <title>DataHarvester - Legal & Illegal Sections</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0d1117; color: #c9d1d9; padding: 20px; }
-        h1 { color: #58a6ff; border-bottom: 2px solid #30363d; padding-bottom: 10px; }
-        h2 { color: #f0f6fc; margin: 20px 0 10px 0; }
-        .stats { display: flex; flex-wrap: wrap; gap: 15px; margin: 15px 0; }
-        .stat-box { background: #161b22; padding: 15px 25px; border-radius: 8px; border: 1px solid #30363d; flex: 1; min-width: 120px; text-align: center; }
-        .stat-box .number { font-size: 2em; font-weight: bold; color: #58a6ff; }
-        .stat-box .label { color: #8b949e; font-size: 0.9em; }
-        input { width: 100%; padding: 10px; margin: 10px 0; background: #161b22; border: 1px solid #30363d; border-radius: 5px; color: #c9d1d9; font-size: 16px; }
-        .table-wrapper { max-height: 70vh; overflow-y: auto; border: 1px solid #30363d; border-radius: 8px; }
-        table { width: 100%; border-collapse: collapse; }
-        th { background: #161b22; text-align: left; padding: 10px; border-bottom: 2px solid #30363d; color: #f0f6fc; position: sticky; top: 0; z-index: 10; }
-        td { padding: 10px; border-bottom: 1px solid #21262d; }
-        tr:hover { background: #161b22; }
-        .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8em; font-weight: bold; }
-        .badge-phone { background: #2ea043; color: white; }
-        .badge-url { background: #8b5cf6; color: white; }
-        .badge-social { background: #1f6feb; color: white; }
-        .badge-email { background: #d29922; color: white; }
-        .badge-address { background: #f0883e; color: white; }
-        .footer { margin-top: 30px; padding-top: 15px; border-top: 1px solid #21262d; color: #8b949e; font-size: 0.9em; text-align: center; }
-        .load-more-btn { background: #1f6feb; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; margin: 20px auto; display: block; font-size: 16px; }
-        .load-more-btn:hover { background: #388bfd; }
-        .load-more-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        body { 
+            font-family: 'Courier New', monospace;
+            background: #0a0a0a;
+            color: #00ff00;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: #111;
+            border: 2px solid #00ff00;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 0 50px rgba(0,255,0,0.1);
+        }
+        h1 { 
+            text-align: center;
+            font-size: 2.5em;
+            color: #00ff00;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0,255,0,0.3);
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 30px;
+            font-size: 0.9em;
+        }
+        .section {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        .section:hover {
+            border-color: #00ff00;
+            box-shadow: 0 0 30px rgba(0,255,0,0.05);
+        }
+        .section h2 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        .section p {
+            color: #aaa;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .legal { border-left: 4px solid #00ff00; }
+        .illegal { border-left: 4px solid #ff0000; }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-legal {
+            background: #00ff00;
+            color: #000;
+        }
+        .btn-legal:hover {
+            background: #00cc00;
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0,255,0,0.3);
+        }
+        .btn-illegal {
+            background: #ff0000;
+            color: #fff;
+        }
+        .btn-illegal:hover {
+            background: #cc0000;
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255,0,0,0.3);
+        }
+        .status {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .status-public { background: #00ff00; color: #000; }
+        .status-private { background: #ff0000; color: #fff; }
+        .footer {
+            text-align: center;
+            color: #444;
+            margin-top: 30px;
+            font-size: 0.8em;
+            border-top: 1px solid #222;
+            padding-top: 20px;
+        }
+        .footer a { color: #00ff00; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+        .password-box {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 10px;
+            display: none;
+        }
+        .password-box.active { display: block; }
+        .password-input {
+            background: #000;
+            border: 1px solid #333;
+            border-radius: 5px;
+            color: #00ff00;
+            padding: 10px 15px;
+            width: 100%;
+            font-size: 1em;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+        }
+        .password-input:focus {
+            outline: none;
+            border-color: #00ff00;
+        }
+        .error-msg {
+            color: #ff0000;
+            display: none;
+            margin: 10px 0;
+        }
+        .error-msg.show { display: block; }
+        .access-granted {
+            color: #00ff00;
+            display: none;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .access-granted.show { display: block; }
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .feature-item {
+            background: #1a1a1a;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #222;
+            color: #aaa;
+            font-size: 0.9em;
+        }
+        .feature-item span { color: #00ff00; }
+        @media (max-width: 600px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.8em; }
+            .features { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
-    <h1>📊 Data Archive – Dashboard</h1>
-    <p style="color:#8b949e;">Real data from GitHub • Government websites • Social media</p>
-
-    <div class="stats" id="stats">
-        <div class="stat-box"><div class="number" id="total">Loading...</div><div class="label">Total Matches</div></div>
-        <div class="stat-box"><div class="number" id="phones">-</div><div class="label">Phones</div></div>
-        <div class="stat-box"><div class="number" id="urls">-</div><div class="label">URLs</div></div>
-        <div class="stat-box"><div class="number" id="social">-</div><div class="label">Social</div></div>
-        <div class="stat-box"><div class="number" id="emails">-</div><div class="label">Emails</div></div>
-    </div>
-
-    <input type="text" id="searchInput" placeholder="🔍 Search all data..." onkeyup="filterData()">
-
-    <div id="dataContainer">
-        <h2>📋 Extracted Data</h2>
-        <div id="loading">Loading data...</div>
-        <div class="table-wrapper" id="tableWrapper">
-            <table id="dataTable" style="display:none;">
-                <thead><tr><th>Type</th><th>Value</th><th>Source</th></tr></thead>
-                <tbody id="tableBody"></tbody>
-            </table>
+    <div class="container">
+        <h1>🔐 DataHarvester</h1>
+        <div class="subtitle">Legal & Illegal Data Harvesting Reference</div>
+        
+        <!-- LEGAL SECTION -->
+        <div class="section legal">
+            <h2>⚖️ Legal Section <span class="status status-public">PUBLIC</span></h2>
+            <p>Legal uses of data harvesting with best practices and compliance guidelines.</p>
+            <div class="features">
+                <div class="feature-item"><span>✅</span> Research & Education</div>
+                <div class="feature-item"><span>✅</span> Security Research</div>
+                <div class="feature-item"><span>✅</span> Business Intelligence</div>
+                <div class="feature-item"><span>✅</span> Law Enforcement (w/warrant)</div>
+                <div class="feature-item"><span>✅</span> Cybersecurity Defense</div>
+                <div class="feature-item"><span>✅</span> Penetration Testing</div>
+            </div>
+            <a href="LEGAL_SECTION.md" class="btn btn-legal">📖 View Legal Section</a>
         </div>
-        <button class="load-more-btn" id="loadMoreBtn" onclick="loadMore()">Load More (50)</button>
-    </div>
-
-    <div class="footer">
-        🔒 Private Repository • Data for personal research only
+        
+        <!-- ILLEGAL SECTION -->
+        <div class="section illegal">
+            <h2>🚫 Illegal Section <span class="status status-private">PASSWORD PROTECTED</span></h2>
+            <p>Educational reference for understanding illegal activities to better protect against them.</p>
+            
+            <div id="illegalStatus">
+                <div class="error-msg" id="errorMsg">❌ Incorrect password. Please try again.</div>
+                <div class="access-granted" id="accessGranted">✅ Access Granted! Loading illegal section...</div>
+            </div>
+            
+            <div class="password-box" id="passwordBox">
+                <p style="color: #888; font-size: 0.9em;">Enter password to view illegal section:</p>
+                <input type="password" id="passwordInput" class="password-input" placeholder="Enter password...">
+                <button onclick="checkPassword()" class="btn btn-illegal" style="width:100%; margin-top:10px;">🔓 Unlock</button>
+                <p style="color: #555; font-size: 0.7em; margin-top:10px;">Hint: Contact administrator for password</p>
+            </div>
+            
+            <div id="illegalContent" style="display:none; margin-top:15px;">
+                <div style="background:#1a0000; border:1px solid #ff0000; border-radius:10px; padding:20px;">
+                    <h3 style="color:#ff0000; margin-bottom:10px;">⚠️ ILLEGAL ACTIVITIES REFERENCE</h3>
+                    <ul style="color:#aaa; line-height:2; list-style:none; padding:0;">
+                        <li>❌ Unauthorized Access - Hacking without permission</li>
+                        <li>❌ Data Theft - Stealing personal information</li>
+                        <li>❌ Privacy Violations - Spying, stalking, surveillance</li>
+                        <li>❌ Intellectual Property Theft - Trade secrets, copyright</li>
+                        <li>❌ Malware Distribution - Viruses, ransomware</li>
+                        <li>❌ Phishing Attacks - Email scams, spear phishing</li>
+                        <li>❌ DDoS Attacks - Website takedowns, extortion</li>
+                        <li>❌ Data Ransom - Ransomware, blackmail</li>
+                        <li>❌ Insider Trading - Using stolen data for trading</li>
+                        <li>❌ Espionage - Corporate, state-sponsored</li>
+                    </ul>
+                    <div style="background:#111; border:1px solid #333; border-radius:5px; padding:15px; margin-top:15px;">
+                        <p style="color:#ff6666; font-weight:bold;">⚠️ LEGAL CONSEQUENCES:</p>
+                        <p style="color:#888; font-size:0.9em;">UAE: 15 years + AED 15M • KSA: 10 years + SAR 5M • USA: 20 years + $250K</p>
+                    </div>
+                    <p style="color:#ff6666; font-size:0.8em; margin-top:15px; border-top:1px solid #333; padding-top:15px;">
+                        📚 EDUCATIONAL USE ONLY - Understanding illegal activities helps protect against them
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- FOOTER -->
+        <div class="footer">
+            <p>🔐 GitHub: <a href="https://github.com/theyabknown-bit/data" target="_blank">theyabknown-bit/data</a></p>
+            <p style="margin-top:5px;">Legal: Public • Illegal: Password Protected</p>
+        </div>
     </div>
 
     <script>
-        let allData = [];
-        let displayCount = 50;
-        const batchSize = 50;
-
-        function loadData() {
-            fetch('data/data.json')
-                .then(response => {
-                    if (!response.ok) throw new Error('File not found');
-                    return response.json();
-                })
-                .then(data => {
-                    allData = data;
-                    renderAll();
-                })
-                .catch(error => {
-                    document.getElementById('loading').textContent = '❌ Failed to load data: ' + error;
-                    console.error('Error:', error);
-                });
-        }
-
-        function renderAll() {
-            const phones = allData.filter(d => d.type === 'phone');
-            const urls = allData.filter(d => d.type === 'url');
-            const social = allData.filter(d => d.type === 'social');
-            const emails = allData.filter(d => d.type === 'email');
-
-            document.getElementById('total').textContent = allData.length;
-            document.getElementById('phones').textContent = phones.length;
-            document.getElementById('urls').textContent = urls.length;
-            document.getElementById('social').textContent = social.length;
-            document.getElementById('emails').textContent = emails.length;
-
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('dataTable').style.display = 'table';
-            renderTable(allData.slice(0, displayCount));
-            document.getElementById('loadMoreBtn').style.display = displayCount < allData.length ? 'block' : 'none';
-        }
-
-        function renderTable(data) {
-            const tbody = document.getElementById('tableBody');
-            tbody.innerHTML = '';
-            data.forEach(item => {
-                const tr = document.createElement('tr');
-                const badgeClass = `badge-${item.type}`;
-                tr.innerHTML = `
-                    <td><span class="badge ${badgeClass}">${item.type}</span></td>
-                    <td>${escapeHtml(item.value || '')}</td>
-                    <td>${escapeHtml(item.source || '')}</td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
-
-        function loadMore() {
-            displayCount += batchSize;
-            if (displayCount > allData.length) displayCount = allData.length;
-            renderTable(allData.slice(0, displayCount));
-            if (displayCount >= allData.length) {
-                document.getElementById('loadMoreBtn').style.display = 'none';
+        let accessCount = 0;
+        const maxAttempts = 3;
+        
+        function checkPassword() {
+            const password = document.getElementById('passwordInput').value;
+            const errorMsg = document.getElementById('errorMsg');
+            const accessGranted = document.getElementById('accessGranted');
+            const illegalContent = document.getElementById('illegalContent');
+            const passwordBox = document.getElementById('passwordBox');
+            
+            if (password === 'theyab!@12') {
+                errorMsg.classList.remove('show');
+                accessGranted.classList.add('show');
+                illegalContent.style.display = 'block';
+                passwordBox.style.display = 'none';
+                
+                // Auto-scroll to content
+                setTimeout(() => {
+                    document.querySelector('.illegal').scrollIntoView({ behavior: 'smooth' });
+                }, 500);
+            } else {
+                accessCount++;
+                errorMsg.classList.add('show');
+                document.getElementById('passwordInput').value = '';
+                document.getElementById('passwordInput').focus();
+                
+                if (accessCount >= maxAttempts) {
+                    errorMsg.textContent = '❌ Too many failed attempts. Please refresh to try again.';
+                    document.getElementById('passwordInput').disabled = true;
+                    document.querySelector('.btn-illegal').disabled = true;
+                }
             }
         }
-
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-
-        function filterData() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            if (!query) {
-                displayCount = 50;
-                renderTable(allData.slice(0, displayCount));
-                document.getElementById('loadMoreBtn').style.display = displayCount < allData.length ? 'block' : 'none';
-                return;
+        
+        // Enter key support
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
             }
-            const filtered = allData.filter(item =>
-                (item.type || '').toLowerCase().includes(query) ||
-                (item.value || '').toLowerCase().includes(query) ||
-                (item.source || '').toLowerCase().includes(query)
-            );
-            renderTable(filtered);
-            document.getElementById('loadMoreBtn').style.display = 'none';
-        }
-
-        // Start
-        loadData();
+        });
+        
+        // Reset on page load
+        window.onload = function() {
+            document.getElementById('passwordInput').focus();
+        };
     </script>
 </body>
 </html>
