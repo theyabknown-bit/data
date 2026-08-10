@@ -1,0 +1,17 @@
+﻿Checklist,Category,Item,Status,Notes
+Passwords,Strength,Use uppercase letters lowercase letters numbers and symbols,To Do,Check all passwords
+Passwords,Strength,Passwords are at least 8 characters long,To Do,Minimum length
+Passwords,Management,Use different passwords across websites apps and systems,To Do,Avoid reuse
+Passwords,Management,Store passwords in an encrypted password manager,To Do,Recommend Bitwarden or LastPass
+Antimalware,Software,Install antimalware software,To Do,Windows Defender is built-in
+Antimalware,Updates,Verify definition files are updated regularly,To Do,Check weekly
+Firewall,Configuration,Firewall is enabled,To Do,Windows Firewall on by default
+Firewall,Configuration,Check firewall settings,To Do,Allow only necessary connections
+Wireless,SSID,Change default SSID,To Do,Use custom network name
+Wireless,Password,Change default admin password,To Do,Use strong password
+Wireless,Port Forwarding,Turn off port forwarding unless needed,To Do,Check router settings
+Wireless,Hotspot,Disable ISP hotspot if not needed,To Do,Check router settings
+Video Meetings,Camera,Test camera and background,To Do,Before each meeting
+Video Meetings,Mic,Test microphone,To Do,Before each meeting
+Video Meetings,Materials,Have presentation materials ready,To Do,Pre-load before meeting
+Video Meetings,Autofill,Clear AutoFill entries from web browser,To Do,Privacy measure

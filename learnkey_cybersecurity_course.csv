@@ -1,0 +1,69 @@
+﻿Domain,Lesson,Subtopic,Question,Answer,Type
+1,1,Cybersecurity and Phishing,What is cybersecurity?,The act or series of acts one takes to prevent the unauthorized use of electronic data.,Definition
+1,1,Cybersecurity and Phishing,What is phishing?,A method of coercion used to attempt to get people to give up personal information via email website or text message.,Definition
+1,1,Cybersecurity and Phishing,Give an example of phishing,Receiving an email that appears to be from a bank asking for account verification.,Example
+1,1,Cybersecurity and Phishing,How can users protect themselves against phishing?,Verify sender addresses check for misspellings hover over links before clicking and never provide personal information via email.,Best Practice
+1,2,Reviewing Emails and Attachments,Determine whether the email is suspicious,"The email contains a correctly spelled subject line - NOT suspicious; From a known free email account - May be suspicious; Body contains misspellings and unusual spacing - Suspicious",Analysis
+1,2,Reviewing Emails and Attachments,What should users check before selecting a link received in an email?,Hover over the link to see the actual URL before clicking.,Best Practice
+1,2,Reviewing Emails and Attachments,What is a best practice when it comes to opening attachments from emails?,Only open attachments from trusted sources and verify the sender.,Best Practice
+1,2,Reviewing Emails and Attachments,Why should users be wary of files containing macros?,Macros can contain malicious code that executes when the file is opened.,Security Risk
+1,2,Reviewing Emails and Attachments,Why should users be wary of zip files?,Zip files can contain hidden malware that extracts when unzipped.,Security Risk
+1,2,Reviewing Emails and Attachments,Why should users be wary of executable files?,Executable files (.exe) can install malware directly on the system.,Security Risk
+1,2,Reviewing Emails and Attachments,.rar file extension,Probably safe but should be scanned,File Safety
+1,2,Reviewing Emails and Attachments,.xlsx file extension,Probably safe,File Safety
+1,2,Reviewing Emails and Attachments,.docm file extension,Be wary - contains macros,File Safety
+1,2,Reviewing Emails and Attachments,.exe file extension,Be wary - executable file,File Safety
+1,3,Common Attacks,Spear phishing,A targeted attack against a specific person or group to gain compromising information,Attack Type
+1,3,Common Attacks,Whaling,An attempt to get information from high-profile people such as a CEO or celebrity,Attack Type
+1,3,Common Attacks,Vishing,An attempt to get information from someone via a phone call or voicemail,Attack Type
+1,3,Common Attacks,Smishing,An attempt to get information from someone via a text message,Attack Type
+1,3,Common Attacks,Pig butchering,An attacker entices a user to invest money with the promise of a huge return,Attack Type
+2,1,Digital Footprints,What is a digital footprint?,A person's overall information stored on computers and servers throughout the world.,Definition
+2,1,Digital Footprints,Why should users not have the same username and password for multiple websites?,If one account is compromised all accounts become vulnerable.,Risk
+2,1,Digital Footprints,What information can be included in the metadata of an image?,Date/time taken camera model GPS coordinates and device information.,Metadata
+2,1,Digital Footprints,"Review list of items that can contribute to a digital footprint",Social media posts emails browsing history online purchases and location data.,Examples
+2,2,Passwords,What is the dark web?,A group of private computer networks that is a common haven for sharing confidential information and illegal cyberactivity.,Definition
+2,2,Passwords,Users should use the same password whenever possible,False,True/False
+2,2,Passwords,Passwords should be stored in an encrypted password manager,True,True/False
+2,2,Passwords,Passwords should include uppercase letters lowercase letters numbers and symbols,True,True/False
+2,2,Passwords,Passwords do not need to be at least eight characters long as long as they are unique,False,True/False
+2,3,MFA and OSINT,What is MFA?,"Two or more authentication methods required to verify identity to a network app system or device.",Definition
+2,3,MFA and OSINT,What are the three main factors of authentication?,"Something you know (password), something you have (token), something you are (biometric).",Factors
+2,3,MFA and OSINT,List two types of OSINT attackers can find on webpages,Email addresses and employee names from company websites.,OSINT
+2,3,MFA and OSINT,How can companies prevent attackers from getting OSINT from an email address posted on a company website?,Use contact forms instead of displaying email addresses directly.,Prevention
+2,4,Social Engineering,What is social engineering?,A group of techniques used to attempt to obtain confidential information from a person.,Definition
+2,4,Social Engineering,Impersonation,"A person claiming to be an employee at the company's internet service provider says they need account details to fix an issue.",Type
+2,4,Social Engineering,Pretexting,"A person claiming to be in sales at a company says they need money transferred to a vendor by end of day; otherwise company may lose vendor.",Type
+2,4,Social Engineering,Baiting,"A person leaves a USB drive labeled as containing important company documents in the lobby of the company's office.",Type
+3,1,Antimalware,List two warning signs of malware on a device,"Slow performance and unusual pop-up ads.",Symptoms
+3,1,Antimalware,What is the difference between malware and a virus?,A virus is a type of malware that needs a carrier to propagate; malware is any malicious software.,Definition
+3,1,Antimalware,What must be kept updated to keep antimalware software working as expected?,Definition files must be updated regularly.,Maintenance
+3,1,Antimalware,Recommended antimalware solutions,"Malwarebytes, AVG, Avast, Norton, Bitdefender, McAfee, Kaspersky, Windows Defender",Tools
+3,2,Internet Safety and Downloading Applications,Users should only send personal information online if website is HTTP address,False,True/False
+3,2,Internet Safety and Downloading Applications,Users should synchronize web browser bookmarks across devices to lessen risk of accessing unsafe website,False,True/False
+3,2,Internet Safety and Downloading Applications,Web browsers and plug-ins should only be updated when a new security risk is discovered,False,True/False
+3,2,Internet Safety and Downloading Applications,Users should ensure web browser settings allow pop-up ads,False,True/False
+3,2,Internet Safety and Downloading Applications,A best practice when using a web browser is to disable activity tracking,True,True/False
+3,2,Internet Safety and Downloading Applications,Web browsing in Incognito mode makes a user's activity completely anonymous,False,True/False
+3,2,Internet Safety and Downloading Applications,Users should only download applications from third-party websites if address is HTTPS address,False,True/False
+3,2,Internet Safety and Downloading Applications,What are cookies?,A text file that stores user information from a website on a device so the website remembers the user on their next visit.,Definition
+3,2,Internet Safety and Downloading Applications,What are cached images?,An image saved from a web browser so it does not need to reload every time someone visits webpage containing image.,Definition
+3,2,Internet Safety and Downloading Applications,Where can users go to download applications on Windows devices safely?,Microsoft Store,Source
+3,2,Internet Safety and Downloading Applications,Where can users go to download applications on iOS devices safely?,App Store,Source
+3,2,Internet Safety and Downloading Applications,Where can users go to download applications on Android devices safely?,Play Store,Source
+4,1,Physical Security,What should be required in secure areas of workplaces?,Access control and authentication.,Requirement
+4,1,Physical Security,How might data be stolen if a workstation is not positioned appropriately?,Shoulder surfing where someone can see the screen over the shoulder.,Risk
+4,1,Physical Security,List one way of keeping confidential information safe in a workplace,Locking screens when away from desk.,Practice
+4,1,Physical Security,What type of networking equipment should be kept in a secure area?,Routers switches and access points.,Equipment
+4,1,Physical Security,What can be used to keep a laptop secure in a workplace?,A laptop lock (Kensington lock).,Tool
+4,1,Physical Security,List one way to keep printers secure,Requiring authentication before printing.,Security
+4,1,Physical Security,What is the principle of least privilege?,A permission state in which people only have the permissions they need to access resources necessary to perform their job duties.,Definition
+5,1,Public and Private Wi-Fi Networks,What is an evil twin?,A wireless access point used for malicious purposes that has the same SSID as a nearby legitimate access point.,Definition
+5,1,Public and Private Wi-Fi Networks,What is a sign of an evil twin when connecting to public Wi-Fi?,Two networks with the same name appearing.,Red Flag
+5,1,Public and Private Wi-Fi Networks,How can users change their Wi-Fi settings to protect their devices from public Wi-Fi networks?,Set network to "Public" instead of "Private" to turn off file sharing.,Setting
+5,1,Public and Private Wi-Fi Networks,How can users protect their devices when using public Wi-Fi networks?,Use a VPN to encrypt traffic.,Protection
+5,1,Public and Private Wi-Fi Networks,How can users protect private Wi-Fi networks in their homes?,Change default SSID and password use WPA2 or WPA3 encryption.,Protection
+5,1,Public and Private Wi-Fi Networks,Why should users consider setting up a guest network for their homes?,To keep IoT devices and guests isolated from personal devices.,Best Practice
+5,2,Video Meetings,List three things people should do to prepare for video meetings,"1. Test camera and mic 2. Clear background 3. Have materials ready",Preparation
+5,2,Video Meetings,What are three video conferencing platforms?,"Zoom, Microsoft Teams, Google Meet",Platforms
+5,2,Video Meetings,What should users avoid doing during video meetings?,"Sharing sensitive information, multitasking, having a cluttered background",Best Practice
