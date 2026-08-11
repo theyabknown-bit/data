@@ -965,3 +965,13 @@ Send-Telegram -Message "🎉 <b>MEGA CRAWL COMPLETE</b>`nTargets: $($targets.Cou
 
 
 
+
+# ===== SEND COMPLETION MESSAGE TO TELEGRAM =====
+$BotToken = "8604319266:AAH53veZLjVq_aoO4geWfVfBb3_tprCSMnw"
+$ChatID = "8606735568"
+$Message = "✅ MEGA CRAWLER COMPLETED!
+All sites have been crawled and images saved to G: drive."
+$Body = @{chat_id = $ChatID; text = $Message} | ConvertTo-Json
+try {
+    Invoke-RestMethod -Uri "https://api.telegram.org/bot$BotToken/sendMessage" -Method Post -Body $Body -ContentType "application/json" -ErrorAction SilentlyContinue
+} catch {}
