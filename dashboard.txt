@@ -1,0 +1,10 @@
+﻿📊 DATAHARVESTER DASHBOARD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📸 Total Images: 102
+📋 Sites Crawled: 4
+📧 Emails Found: 0
+📞 Phones Found: 0
+🔗 URLs Found: 0
+🌐 IPs Found: 0
+Updated: 2026-08-14 05:55:29
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━

@@ -1,0 +1,187 @@
+﻿[
+    {
+        "Phones":  "",
+        "Timestamp":  "2026-08-14 05:42:00",
+        "ImageCount":  0,
+        "Urls":  "",
+        "Ips":  "",
+        "Url":  {
+                    "value":  "https://picsum.photos/200/300",
+                    "PSPath":  "C:\\Users\\theya\\Desktop\\DataHarvester\\urls.txt",
+                    "PSParentPath":  "C:\\Users\\theya\\Desktop\\DataHarvester",
+                    "PSChildName":  "urls.txt",
+                    "PSDrive":  {
+                                    "CurrentLocation":  "Users\\theya",
+                                    "Name":  "C",
+                                    "Provider":  "Microsoft.PowerShell.Core\\FileSystem",
+                                    "Root":  "C:\\",
+                                    "Description":  "Windows-SSD",
+                                    "MaximumSize":  null,
+                                    "Credential":  "System.Management.Automation.PSCredential",
+                                    "DisplayRoot":  null
+                                },
+                    "PSProvider":  {
+                                       "ImplementingType":  "Microsoft.PowerShell.Commands.FileSystemProvider",
+                                       "HelpFile":  "System.Management.Automation.dll-Help.xml",
+                                       "Name":  "FileSystem",
+                                       "PSSnapIn":  "Microsoft.PowerShell.Core",
+                                       "ModuleName":  "Microsoft.PowerShell.Core",
+                                       "Module":  null,
+                                       "Description":  "",
+                                       "Capabilities":  52,
+                                       "Home":  "C:\\Users\\theya",
+                                       "Drives":  "C D G"
+                                   },
+                    "ReadCount":  1
+                },
+        "Emails":  ""
+    },
+    {
+        "Phones":  "",
+        "Timestamp":  "2026-08-14 05:42:01",
+        "ImageCount":  0,
+        "Urls":  "",
+        "Ips":  "",
+        "Url":  {
+                    "value":  "https://picsum.photos/200/300?random=1",
+                    "PSPath":  "C:\\Users\\theya\\Desktop\\DataHarvester\\urls.txt",
+                    "PSParentPath":  "C:\\Users\\theya\\Desktop\\DataHarvester",
+                    "PSChildName":  "urls.txt",
+                    "PSDrive":  {
+                                    "CurrentLocation":  "Users\\theya",
+                                    "Name":  "C",
+                                    "Provider":  "Microsoft.PowerShell.Core\\FileSystem",
+                                    "Root":  "C:\\",
+                                    "Description":  "Windows-SSD",
+                                    "MaximumSize":  null,
+                                    "Credential":  "System.Management.Automation.PSCredential",
+                                    "DisplayRoot":  null
+                                },
+                    "PSProvider":  {
+                                       "ImplementingType":  "Microsoft.PowerShell.Commands.FileSystemProvider",
+                                       "HelpFile":  "System.Management.Automation.dll-Help.xml",
+                                       "Name":  "FileSystem",
+                                       "PSSnapIn":  "Microsoft.PowerShell.Core",
+                                       "ModuleName":  "Microsoft.PowerShell.Core",
+                                       "Module":  null,
+                                       "Description":  "",
+                                       "Capabilities":  52,
+                                       "Home":  "C:\\Users\\theya",
+                                       "Drives":  "C D G"
+                                   },
+                    "ReadCount":  2
+                },
+        "Emails":  ""
+    },
+    {
+        "Phones":  "",
+        "Timestamp":  "2026-08-14 05:42:03",
+        "ImageCount":  0,
+        "Urls":  "",
+        "Ips":  "",
+        "Url":  {
+                    "value":  "https://picsum.photos/200/300?random=2",
+                    "PSPath":  "C:\\Users\\theya\\Desktop\\DataHarvester\\urls.txt",
+                    "PSParentPath":  "C:\\Users\\theya\\Desktop\\DataHarvester",
+                    "PSChildName":  "urls.txt",
+                    "PSDrive":  {
+                                    "CurrentLocation":  "Users\\theya",
+                                    "Name":  "C",
+                                    "Provider":  "Microsoft.PowerShell.Core\\FileSystem",
+                                    "Root":  "C:\\",
+                                    "Description":  "Windows-SSD",
+                                    "MaximumSize":  null,
+                                    "Credential":  "System.Management.Automation.PSCredential",
+                                    "DisplayRoot":  null
+                                },
+                    "PSProvider":  {
+                                       "ImplementingType":  "Microsoft.PowerShell.Commands.FileSystemProvider",
+                                       "HelpFile":  "System.Management.Automation.dll-Help.xml",
+                                       "Name":  "FileSystem",
+                                       "PSSnapIn":  "Microsoft.PowerShell.Core",
+                                       "ModuleName":  "Microsoft.PowerShell.Core",
+                                       "Module":  null,
+                                       "Description":  "",
+                                       "Capabilities":  52,
+                                       "Home":  "C:\\Users\\theya",
+                                       "Drives":  "C D G"
+                                   },
+                    "ReadCount":  3
+                },
+        "Emails":  ""
+    },
+    {
+        "Phones":  "",
+        "Timestamp":  "2026-08-14 05:42:04",
+        "ImageCount":  0,
+        "Urls":  "",
+        "Ips":  "",
+        "Url":  {
+                    "value":  "https://picsum.photos/200/300?random=3",
+                    "PSPath":  "C:\\Users\\theya\\Desktop\\DataHarvester\\urls.txt",
+                    "PSParentPath":  "C:\\Users\\theya\\Desktop\\DataHarvester",
+                    "PSChildName":  "urls.txt",
+                    "PSDrive":  {
+                                    "CurrentLocation":  "Users\\theya",
+                                    "Name":  "C",
+                                    "Provider":  "Microsoft.PowerShell.Core\\FileSystem",
+                                    "Root":  "C:\\",
+                                    "Description":  "Windows-SSD",
+                                    "MaximumSize":  null,
+                                    "Credential":  "System.Management.Automation.PSCredential",
+                                    "DisplayRoot":  null
+                                },
+                    "PSProvider":  {
+                                       "ImplementingType":  "Microsoft.PowerShell.Commands.FileSystemProvider",
+                                       "HelpFile":  "System.Management.Automation.dll-Help.xml",
+                                       "Name":  "FileSystem",
+                                       "PSSnapIn":  "Microsoft.PowerShell.Core",
+                                       "ModuleName":  "Microsoft.PowerShell.Core",
+                                       "Module":  null,
+                                       "Description":  "",
+                                       "Capabilities":  52,
+                                       "Home":  "C:\\Users\\theya",
+                                       "Drives":  "C D G"
+                                   },
+                    "ReadCount":  4
+                },
+        "Emails":  ""
+    },
+    {
+        "Phones":  "",
+        "Timestamp":  "2026-08-14 05:42:05",
+        "ImageCount":  0,
+        "Urls":  "",
+        "Ips":  "",
+        "Url":  {
+                    "value":  "https://picsum.photos/200/300?random=4",
+                    "PSPath":  "C:\\Users\\theya\\Desktop\\DataHarvester\\urls.txt",
+                    "PSParentPath":  "C:\\Users\\theya\\Desktop\\DataHarvester",
+                    "PSChildName":  "urls.txt",
+                    "PSDrive":  {
+                                    "CurrentLocation":  "Users\\theya",
+                                    "Name":  "C",
+                                    "Provider":  "Microsoft.PowerShell.Core\\FileSystem",
+                                    "Root":  "C:\\",
+                                    "Description":  "Windows-SSD",
+                                    "MaximumSize":  null,
+                                    "Credential":  "System.Management.Automation.PSCredential",
+                                    "DisplayRoot":  null
+                                },
+                    "PSProvider":  {
+                                       "ImplementingType":  "Microsoft.PowerShell.Commands.FileSystemProvider",
+                                       "HelpFile":  "System.Management.Automation.dll-Help.xml",
+                                       "Name":  "FileSystem",
+                                       "PSSnapIn":  "Microsoft.PowerShell.Core",
+                                       "ModuleName":  "Microsoft.PowerShell.Core",
+                                       "Module":  null,
+                                       "Description":  "",
+                                       "Capabilities":  52,
+                                       "Home":  "C:\\Users\\theya",
+                                       "Drives":  "C D G"
+                                   },
+                    "ReadCount":  5
+                },
+        "Emails":  ""
+    }
+]
